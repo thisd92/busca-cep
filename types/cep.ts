@@ -9,5 +9,4 @@ export interface Cep {
   gia?: number | null;
   ddd?: number | null;
   siafi?: number | null;
-  erro?: string | null;
 }
