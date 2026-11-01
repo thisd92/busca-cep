@@ -1,57 +1,36 @@
-# Busca CEP
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Este projeto React consome a API ViaCEP para consultar e exibir detalhes de um CEP específico na interface.
+## Getting Started
 
-## Funcionalidades
+First, run the development server:
 
-- **Busca de CEP**: Permite ao usuário inserir um CEP e consultar suas informações.
-- **Exibição de Dados**: Mostra os seguintes dados do CEP consultado:
-  - CEP
-  - Logradouro
-  - Complemento
-  - Bairro
-  - Localidade (cidade)
-  - UF (estado)
-  - IBGE
-  - GIA
-  - DDD
-  - SIAFI
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Uso
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Para utilizar o projeto localmente, siga as instruções abaixo:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Pré-requisitos
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Certifique-se de ter Node.js instalado na sua máquina.
+## Learn More
 
-- Node.js: [Baixar e instalar Node.js](https://nodejs.org/)
+To learn more about Next.js, take a look at the following resources:
 
-### Instalação
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-1. Clone o repositório:
-  ```bash
-   git clone https://github.com/thisd92/busca-cep.git
-   cd busca-cep
-  ```
-2. Instale as dependências:
- ```bash
-   npm install
-  ```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### Executando o Projeto
+## Deploy on Vercel
 
-Para iniciar o servidor de desenvolvimento:
-  ```bash
-  npm start
-  ```
-Abra seu navegador e acesse http://localhost:3000/ para visualizar o aplicativo.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Personalização
-Sinta-se à vontade para personalizar o projeto conforme suas necessidades. Você pode adicionar mais funcionalidades, melhorar o design ou modificar o layout da interface.
-
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um problema ou enviar um pull request para quaisquer alterações.
-
-## Licença
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
