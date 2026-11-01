@@ -1,9 +1,10 @@
 "use client";
+
 import { SearchForm } from "@/components/SearchForm";
 import { CepData } from "@/components/AddressCard";
+import { AddressSkeleton } from "@/components/AddressSkeleton";
 import { Cep } from "@/types/cep";
 import { useEffect, useState } from "react";
-import { AddressSkeleton } from "@/components/AddressSkeleton";
 
 export default function Home() {
   const [cepData, setCepData] = useState<Cep | null>(null);
@@ -16,28 +17,43 @@ export default function Home() {
 
     const timer = setTimeout(() => {
       setError(null);
-    }, 4000); // 4000 milissegundos = 4 segundos
+    }, 4000);
 
-    // Função de limpeza para cancelar o timer caso o componente desmonte
-    // ou se o usuário fizer uma nova busca antes dos 4 segundos terminarem
     return () => clearTimeout(timer);
   }, [error]);
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="min-h-screen bg-slate-100 dark:bg-zinc-950 flex flex-col items-center justify-center p-4">
+      <main className="w-full max-w-md bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl shadow-xl p-6 sm:p-8 transition-all">
+        {/* Cabeçalho do Card */}
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-zinc-100">
+            Buscador de CEP
+          </h1>
+          <p className="text-sm text-slate-500 dark:text-zinc-400 mt-1">
+            Digite o CEP para consultar o endereço completo
+          </p>
+        </div>
+
+        {/* Formulário de Busca */}
         <SearchForm
           setCepData={setCepData}
           setIsLoading={setIsLoading}
           setError={setError}
         />
-        {/* Exibe a mensagem de erro se existir */}
+
+        {/* Mensagem de Erro */}
         {error && (
-          <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded w-full max-w-md">
-            {error}
+          <div className="mt-4 p-3 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 text-red-600 dark:text-red-400 rounded-lg text-sm font-medium flex items-center gap-2 animate-fadeIn">
+            <span>⚠️</span>
+            <span>{error}</span>
           </div>
         )}
-        {isLoading ? <AddressSkeleton /> : <CepData cepData={cepData} />}
+
+        {/* Resultado / Skeleton */}
+        <div className="mt-6">
+          {isLoading ? <AddressSkeleton /> : <CepData cepData={cepData} />}
+        </div>
       </main>
     </div>
   );
