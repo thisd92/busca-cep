@@ -5,19 +5,32 @@ import getCep from "@/service/cepService";
 import { Cep } from "@/types/cep";
 import { FaSearch } from "react-icons/fa";
 interface SearchFormProps {
-  setCepData: (data: Cep) => void;
+  setCepData: (data: Cep | null) => void;
   setIsLoading: (isLoading: boolean) => void;
+  setError: (error: string | null) => void;
 }
 
-export function SearchForm({ setCepData, setIsLoading }: SearchFormProps) {
+export function SearchForm({
+  setCepData,
+  setIsLoading,
+  setError,
+}: SearchFormProps) {
   const [cep, setCep] = useState("");
 
   const handleSearch = async () => {
+    setError(null);
+    setCepData(null);
     if (!cep.trim()) return;
     setIsLoading(true);
     try {
       const data = await getCep(cep);
       setCepData(data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Ocorreu um erro inesperado ao buscar o CEP.");
+      }
     } finally {
       setIsLoading(false);
     }
